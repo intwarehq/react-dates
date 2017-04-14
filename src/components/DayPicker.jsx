@@ -4,6 +4,8 @@ import shallowCompare from 'react-addons-shallow-compare';
 import ReactDOM from 'react-dom';
 import { forbidExtraProps, nonNegativeInteger } from 'airbnb-prop-types';
 import moment from 'moment';
+import momentJalaali from "moment-jalaali";
+
 import cx from 'classnames';
 import throttle from 'lodash.throttle';
 
@@ -56,6 +58,9 @@ const propTypes = forbidExtraProps({
   onPrevMonthClick: PropTypes.func,
   onNextMonthClick: PropTypes.func,
 
+  // month props
+  renderMonth: PropTypes.func,
+
   // day props
   modifiers: PropTypes.object,
   renderDay: PropTypes.func,
@@ -91,6 +96,9 @@ export const defaultProps = {
   navNext: null,
   onPrevMonthClick() {},
   onNextMonthClick() {},
+
+  // month props
+  renderMonth: null,
 
   // day props
   modifiers: {},
@@ -672,6 +680,7 @@ export default class DayPicker extends React.Component {
       onDayClick,
       onDayMouseEnter,
       onDayMouseLeave,
+      renderMonth,
       renderDay,
       renderCalendarInfo,
       onOutsideClick,
@@ -781,6 +790,7 @@ export default class DayPicker extends React.Component {
                 onDayClick={onDayClick}
                 onDayMouseEnter={onDayMouseEnter}
                 onDayMouseLeave={onDayMouseLeave}
+                renderMonth={renderMonth}
                 renderDay={renderDay}
                 onMonthTransitionEnd={this.updateStateAfterMonthTransition}
                 monthFormat={monthFormat}

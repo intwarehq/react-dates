@@ -1,6 +1,5 @@
 import React from 'react';
-// import moment from 'moment';
-import moment from 'moment-jalaali';
+import moment from 'moment';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import { forbidExtraProps } from 'airbnb-prop-types';
@@ -69,6 +68,9 @@ const defaultProps = {
   onNextMonthClick() {},
   onClose() {},
 
+  // month presentation and interaction related props
+  renderMonth: null,
+
   // day presentation and interaction related props
   renderDay: null,
   enableOutsideDays: false,
@@ -83,6 +85,7 @@ const defaultProps = {
 };
 
 export default class SingleDatePicker extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -92,7 +95,6 @@ export default class SingleDatePicker extends React.Component {
       isInputFocused: false,
     };
 
-    moment.loadPersian();
     this.today = moment();
     this.isTouchDevice = false;
 
@@ -390,6 +392,7 @@ export default class SingleDatePicker extends React.Component {
       withPortal,
       withFullScreenPortal,
       focused,
+      renderMonth,
       renderDay,
       renderCalendarInfo,
       date,
@@ -438,6 +441,7 @@ export default class SingleDatePicker extends React.Component {
           initialVisibleMonth={initialVisibleMonthThunk}
           navPrev={navPrev}
           navNext={navNext}
+          renderMonth={renderMonth}
           renderDay={renderDay}
           renderCalendarInfo={renderCalendarInfo}
           isFocused={isDayPickerFocused}
