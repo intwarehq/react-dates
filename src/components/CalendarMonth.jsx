@@ -61,7 +61,7 @@ const defaultProps = {
   isFocused: false,
 
   // i18n
-  monthFormat: 'jYYYY jM', // iran locale
+  monthFormat: 'MMMM YYYY', // english locale
   phrases: CalendarDayPhrases,
 };
 

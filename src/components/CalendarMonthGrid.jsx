@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import shallowCompare from 'react-addons-shallow-compare';
 import momentPropTypes from 'react-moment-proptypes';
 import { forbidExtraProps, nonNegativeInteger } from 'airbnb-prop-types';
-import moment from 'moment-jalali';
+import moment from 'moment';
 import cx from 'classnames';
 import { addEventListener, removeEventListener } from 'consolidated-events';
 
@@ -67,7 +67,7 @@ const defaultProps = {
   isFocused: false,
 
   // i18n
-  monthFormat: 'jYYYY jM', // english locale
+  monthFormat: 'MMMM YYYY', // english locale
   phrases: CalendarDayPhrases,
 };
 
@@ -86,7 +86,6 @@ function getMonths(initialMonth, numberOfMonths) {
 export default class CalendarMonthGrid extends React.Component {
   constructor(props) {
     super(props);
-    moment.loadPersian()
     this.state = {
       months: getMonths(props.initialMonth, props.numberOfMonths),
     };

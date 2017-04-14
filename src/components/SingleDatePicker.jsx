@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment-jalali';
+import moment from 'moment';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import { forbidExtraProps } from 'airbnb-prop-types';
@@ -90,7 +90,7 @@ export default class SingleDatePicker extends React.Component {
       isDayPickerFocused: false,
       isInputFocused: false,
     };
-    moment.loadPersian();
+
     this.today = moment();
     this.isTouchDevice = false;
 
